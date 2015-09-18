@@ -5,27 +5,21 @@ public class LangStat {
 
 	public static void main(String[] args) {
 
-		String toScan = "MIN(3,4,2,MAX(3,4,MAX(5,2),5,MIN(3,4),6),3,4)";
-
-		// toScan = "MIN(3,4,5)";
-		 toScan="MIN(3,MIN(3,MIN(4,5,MIN(4,5))))";
-		// toScan = "MIN(1)";
+		String toScan = "MIN(3,MIN(3,MIN(4,5,MIN(4,5))))";
 		List<Token> listofTokens = new ArrayList<Token>();
-
 		if (toScan.contains(",")) {
 			listofTokens = toTokens(toScan);
 
 		} else {
 			throw new IllegalArgumentException("String " + toScan + " does not contain ,");
 		}
-		
-		
+
 		for (Token obj : listofTokens) {
-			System.out.println("|" + obj.token + "|" + obj.level);
+			System.out.println("|" + obj.value + "|" + obj.level);
 		}
 
 		System.out.println(getMax(listofTokens));
-		
+
 	}
 
 	static int getMax(List<Token> listofTokens) {
